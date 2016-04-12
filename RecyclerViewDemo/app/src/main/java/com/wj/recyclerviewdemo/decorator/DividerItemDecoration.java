@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package wj.com.recyclerviewdemo.decorator;
+package com.wj.recyclerviewdemo.decorator;
 
 import android.content.Context;
 import android.content.res.TypedArray;

@@ -1,4 +1,4 @@
-package wj.com.recyclerviewdemo.adapter;/**
+package com.wj.recyclerviewdemo.adapter;/**
  * Created by wangjiang on 2016/4/9.
  */
 
@@ -9,8 +9,8 @@ import android.util.SparseIntArray;
 
 import java.util.Random;
 
-import wj.com.recyclerviewdemo.R;
-import wj.com.recyclerviewdemo.util.DisplayUtil;
+import com.wj.recyclerviewdemo.R;
+import com.wj.recyclerviewdemo.util.DisplayUtil;
 
 /**
  * User: WangJiang(wangjiang7747@gmail.com)

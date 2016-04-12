@@ -1,4 +1,4 @@
-package wj.com.recyclerviewdemo.adapter;/**
+package com.wj.recyclerviewdemo.adapter;/**
  * Created by wangjiang on 2016/4/7.
  */
 
@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import wj.com.recyclerviewdemo.R;
+import com.wj.recyclerviewdemo.R;
 
 /**
  * User: WangJiang(wangjiang7747@gmail.com)

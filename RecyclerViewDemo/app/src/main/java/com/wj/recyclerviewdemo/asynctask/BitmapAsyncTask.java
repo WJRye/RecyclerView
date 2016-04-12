@@ -1,4 +1,4 @@
-package wj.com.recyclerviewdemo.asynctask;
+package com.wj.recyclerviewdemo.asynctask;
 
 import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
@@ -6,7 +6,7 @@ import android.os.AsyncTask;
 import android.support.v4.util.LruCache;
 import android.widget.ImageView;
 
-import wj.com.recyclerviewdemo.util.BitmapUtil;
+import com.wj.recyclerviewdemo.util.BitmapUtil;
 
 
 /**

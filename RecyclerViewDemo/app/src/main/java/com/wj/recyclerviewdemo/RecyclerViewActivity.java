@@ -1,4 +1,4 @@
-package wj.com.recyclerviewdemo;/**
+package com.wj.recyclerviewdemo;/**
  * Created by wangjiang on 2016/4/7.
  */
 
@@ -11,11 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import wj.com.recyclerviewdemo.adapter.BaseGridAdapter;
-import wj.com.recyclerviewdemo.adapter.GridAdapter;
-import wj.com.recyclerviewdemo.adapter.ListAdapter;
-import wj.com.recyclerviewdemo.adapter.StaggeredGridAdapter;
-import wj.com.recyclerviewdemo.decorator.DividerItemDecoration;
+import com.wj.recyclerviewdemo.adapter.BaseGridAdapter;
+import com.wj.recyclerviewdemo.adapter.GridAdapter;
+import com.wj.recyclerviewdemo.adapter.ListAdapter;
+import com.wj.recyclerviewdemo.adapter.StaggeredGridAdapter;
+import com.wj.recyclerviewdemo.decorator.DividerItemDecoration;
 
 /**
  * User: WangJiang(wangjiang7747@gmail.com)

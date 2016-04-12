@@ -1,4 +1,4 @@
-package wj.com.recyclerviewdemo;/**
+package com.wj.recyclerviewdemo;/**
  * Created by wangjiang on 2016/4/7.
  */
 

@@ -1,4 +1,4 @@
-package wj.com.recyclerviewdemo;
+package com.wj.recyclerviewdemo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import wj.com.recyclerviewdemo.util.DisplayUtil;
+import com.wj.recyclerviewdemo.util.DisplayUtil;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {

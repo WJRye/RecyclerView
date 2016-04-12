@@ -1,4 +1,4 @@
-package wj.com.recyclerviewdemo.adapter;/**
+package com.wj.recyclerviewdemo.adapter;/**
  * Created by wangjiang on 2016/4/7.
  */
 
@@ -18,8 +18,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import wj.com.recyclerviewdemo.R;
-import wj.com.recyclerviewdemo.asynctask.BitmapAsyncTask;
+import com.wj.recyclerviewdemo.R;
+import com.wj.recyclerviewdemo.asynctask.BitmapAsyncTask;
 
 /**
  * User: WangJiang(wangjiang7747@gmail.com)
