@@ -28,13 +28,19 @@ import wj.com.recyclerviewdemo.asynctask.BitmapAsyncTask;
  */
 public abstract class BaseGridAdapter extends RecyclerView.Adapter {
 
+    //水平网格
     public static final int STAGGERED_GRID_HORIZONTAL = 0;
+    //瀑布流
     public static final int STAGGERED_GRID_VERTICAL = 1;
+    //垂直网格
     public static final int GRID_VERTICAL = 2;
     public int mOrientation = GRID_VERTICAL;
+    //是否停止了滑动
     private boolean mIsIdle = true;
+    //item 的宽高
     int[] mWH = null;
     private List<String> mUris = new ArrayList<>();
+    //缓存图片
     private LruCache<String, Bitmap> mLruCache;
     private Set<BitmapAsyncTask> mBitmapAsyncTasks;
 
@@ -54,6 +60,11 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
 
     public abstract int[] getWidthAndHeight(Context context, int spanCount);
 
+    /**
+     * 监听RecyclerView的滑动事件
+     *
+     * @param recyclerView
+     */
     private void addOnScrollListener(RecyclerView recyclerView) {
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -71,6 +82,7 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
                     if (mIsIdle) {
                         mIsIdle = false;
                         int size = mBitmapAsyncTasks.size();
+                        //在滑动的时候，取消未完成的任务
                         BitmapAsyncTask[] bats = mBitmapAsyncTasks.toArray(new BitmapAsyncTask[size]);
                         for (BitmapAsyncTask bat : bats) {
                             if (bat != null && bat.getStatus() != AsyncTask.Status.FINISHED) {
@@ -85,6 +97,12 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
         });
     }
 
+    /**
+     * 获得系统图片的路径
+     *
+     * @param context
+     * @return
+     */
     private ArrayList<String> getUris(Context context) {
         ArrayList<String> uris = new ArrayList<>();
         //按照添加时间倒叙排序

@@ -54,6 +54,7 @@ public class StaggeredGridAdapter extends BaseGridAdapter {
                 height = mRandom.nextInt(mWH[1]) + mWH[1];
                 mHeightArray.put(i, height);
             }
+            //动态设置item的高度
             ViewCache viewCache = (ViewCache) viewHolder;
             RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) viewCache.imageView.getLayoutParams();
             params.height = height;

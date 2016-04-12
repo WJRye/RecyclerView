@@ -43,12 +43,15 @@ public class ListAdapter extends RecyclerView.Adapter {
         textView.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
         textView.setPadding(context.getResources().getDimensionPixelSize(R.dimen.padding_10dp), 0, 0, 0);
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getResources().getDimensionPixelSize(R.dimen.textSize_18sp));
+        int height = context.getResources().getDimensionPixelSize(R.dimen.size_50dp);
         if (i == VIEW_TYPE_ONE) {
             textView.setBackgroundColor(Color.WHITE);
+            height = context.getResources().getDimensionPixelSize(R.dimen.size_50dp);
         } else if (i == VIEW_TYPE_TWO) {
             textView.setBackgroundColor(Color.GREEN);
+            height = context.getResources().getDimensionPixelSize(R.dimen.size_35dp);
         }
-        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, context.getResources().getDimensionPixelSize(R.dimen.size_50dp));
+        RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(RecyclerView.LayoutParams.MATCH_PARENT, height);
         textView.setLayoutParams(params);
         return new ViewCache(textView);
     }
@@ -56,8 +59,8 @@ public class ListAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int i) {
         ViewCache viewCache = (ViewCache) viewHolder;
-        if (i % 3 == 0) {
-            viewCache.textView.setText("Title " + i / 3);
+        if (i % 5 == 0) {
+            viewCache.textView.setText("Title " + i / 5);
         } else {
             viewCache.textView.setText(mDatas.get(i));
         }
@@ -70,7 +73,7 @@ public class ListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (position % 3 == 0) return VIEW_TYPE_TWO;
+        if (position % 5 == 0) return VIEW_TYPE_TWO;
         return VIEW_TYPE_ONE;
     }
 
