@@ -1,7 +1,7 @@
 package com.wj.recyclerviewdemo.util;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
@@ -26,7 +26,7 @@ public final class BitmapUtil {
      * 压缩图片
      */
     @SuppressLint("NewApi")
-    public static final Bitmap compress(Context context, String uri, int dstWidth, int dstHeight) {
+    public static final Bitmap compress(String uri, int dstWidth, int dstHeight) {
         Bitmap bitmap = null;
         try {
             BitmapFactory.Options opts = new BitmapFactory.Options();
@@ -57,7 +57,7 @@ public final class BitmapUtil {
             opts.inPreferredConfig = Config.RGB_565;
             opts.inPurgeable = true;
             opts.inInputShareable = true;
-            opts.inTargetDensity = context.getResources().getDisplayMetrics().densityDpi;
+            opts.inTargetDensity = Resources.getSystem().getDisplayMetrics().densityDpi;
             opts.inScaled = true;
             opts.inTempStorage = new byte[16 * 1024];
             opts.inJustDecodeBounds = false;

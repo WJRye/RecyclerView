@@ -42,7 +42,7 @@ public class BitmapAsyncTask extends AsyncTask<LruCache<String, Bitmap>, Void, B
     @SuppressLint("NewApi")
     @Override
     protected Bitmap doInBackground(@SuppressWarnings("unchecked") LruCache<String, Bitmap>... params) {
-        Bitmap bitmap = BitmapUtil.compress(mPiture.getContext(), mUri, mWH[0], mWH[1]);
+        Bitmap bitmap = BitmapUtil.compress(mUri, mWH[0], mWH[1]);
         if (bitmap != null) {
             params[0].put(mUri, bitmap);
         }
