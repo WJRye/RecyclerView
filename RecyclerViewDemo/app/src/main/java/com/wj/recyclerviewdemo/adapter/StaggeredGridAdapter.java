@@ -7,10 +7,10 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseIntArray;
 
-import java.util.Random;
-
 import com.wj.recyclerviewdemo.R;
 import com.wj.recyclerviewdemo.util.DisplayUtil;
+
+import java.util.Random;
 
 /**
  * User: WangJiang(wangjiang7747@gmail.com)
@@ -24,8 +24,8 @@ public class StaggeredGridAdapter extends BaseGridAdapter {
     //缓存Item的高度
     private SparseIntArray mHeightArray = new SparseIntArray();
 
-    public StaggeredGridAdapter(Context context, RecyclerView recyclerView, int spanCount, int orientation) {
-        super(context, recyclerView, spanCount, orientation);
+    public StaggeredGridAdapter(RecyclerView recyclerView, int spanCount, int orientation) {
+        super(recyclerView, spanCount, orientation);
     }
 
     @Override

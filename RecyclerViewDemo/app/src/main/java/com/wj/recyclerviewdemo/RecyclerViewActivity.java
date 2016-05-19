@@ -29,8 +29,6 @@ public class RecyclerViewActivity extends BaseActivity {
     public static final int TYPE_STAGGERED_GRID_VERTICAL = 4;
     public static final String TYPE = "type";
     public static final String TITLE = "title";
-    private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,47 +38,43 @@ public class RecyclerViewActivity extends BaseActivity {
     }
 
     private void initViews() {
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        mRecyclerView.setHasFixedSize(true);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         int type = getIntent().getIntExtra(TYPE, 0);
         RecyclerView.LayoutManager layoutManager = null;
-        DividerItemDecoration dividerItemDecoration = null;
+        RecyclerView.Adapter adapter = null;
         switch (type) {
             case TYPE_LIST: {
                 layoutManager = new LinearLayoutManager(this);
-                dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.TYPE_LIST);
-                mRecyclerView.addItemDecoration(dividerItemDecoration);
-                mAdapter = new ListAdapter();
+                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.TYPE_LIST);
+                recyclerView.addItemDecoration(dividerItemDecoration);
+                adapter = new ListAdapter();
                 break;
             }
             case TYPE_GRID: {
                 int spanCount = 3;
                 layoutManager = new GridLayoutManager(this, spanCount);
-//                dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.TYPE_GRID);
-//                mRecyclerView.addItemDecoration(dividerItemDecoration);
-                mAdapter = new GridAdapter(this, mRecyclerView, spanCount);
+                adapter = new GridAdapter(recyclerView, spanCount);
                 break;
             }
             case TYPE_STAGGERED_GRID_HORIZONTAL: {
                 int spanCount = 4;
                 layoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.HORIZONTAL);
-//                dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.TYPE_GRID);
-//                mRecyclerView.addItemDecoration(dividerItemDecoration);
-                mAdapter = new StaggeredGridAdapter(this, mRecyclerView, spanCount, BaseGridAdapter.STAGGERED_GRID_HORIZONTAL);
+                adapter = new StaggeredGridAdapter(recyclerView, spanCount, BaseGridAdapter.STAGGERED_GRID_HORIZONTAL);
                 break;
             }
             case TYPE_STAGGERED_GRID_VERTICAL: {
                 int spanCount = 3;
                 layoutManager = new StaggeredGridLayoutManager(spanCount, StaggeredGridLayoutManager.VERTICAL);
-                mAdapter = new StaggeredGridAdapter(this, mRecyclerView, spanCount, BaseGridAdapter.STAGGERED_GRID_VERTICAL);
+                adapter = new StaggeredGridAdapter(recyclerView, spanCount, BaseGridAdapter.STAGGERED_GRID_VERTICAL);
                 break;
             }
             default:
                 break;
         }
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
     @Override

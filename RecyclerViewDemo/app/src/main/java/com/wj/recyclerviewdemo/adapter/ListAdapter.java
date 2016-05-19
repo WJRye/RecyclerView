@@ -11,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.wj.recyclerviewdemo.R;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.wj.recyclerviewdemo.R;
 
 /**
  * User: WangJiang(wangjiang7747@gmail.com)

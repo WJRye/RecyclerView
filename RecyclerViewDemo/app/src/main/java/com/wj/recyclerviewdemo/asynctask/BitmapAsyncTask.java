@@ -13,7 +13,6 @@ import com.wj.recyclerviewdemo.util.BitmapUtil;
  * 该类主要用作于加载图片
  */
 public class BitmapAsyncTask extends AsyncTask<LruCache<String, Bitmap>, Void, Bitmap> {
-    private final int KEY = (int) System.currentTimeMillis();
     private int[] mWH;
     private String mUri;
     private ImageView mPiture;
@@ -24,17 +23,15 @@ public class BitmapAsyncTask extends AsyncTask<LruCache<String, Bitmap>, Void, B
      * @param wh      图片的宽高
      */
     public BitmapAsyncTask(ImageView picture, String uri, int[] wh) {
-        if (picture == null) throw new NullPointerException("The ImageView is Null!");
         mPiture = picture;
         //防止错位显示图片
         mUri = uri;
-        mPiture.setTag(KEY, mUri);
         mWH = wh;
     }
 
     @Override
     protected void onPostExecute(Bitmap result) {
-        if (result != null && mUri.equals(mPiture.getTag(KEY))) {
+        if (result != null) {
             mPiture.setImageBitmap(result);
         }
     }

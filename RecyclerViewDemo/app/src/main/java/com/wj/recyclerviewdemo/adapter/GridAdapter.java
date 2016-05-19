@@ -16,8 +16,8 @@ import com.wj.recyclerviewdemo.util.DisplayUtil;
 public class GridAdapter extends BaseGridAdapter {
 
 
-    public GridAdapter(Context context, RecyclerView recyclerView, int spanCount) {
-        super(context, recyclerView, spanCount, GRID_VERTICAL);
+    public GridAdapter(RecyclerView recyclerView, int spanCount) {
+        super(recyclerView, spanCount, GRID_VERTICAL);
     }
 
 

@@ -13,13 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.wj.recyclerviewdemo.R;
+import com.wj.recyclerviewdemo.asynctask.BitmapAsyncTask;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import com.wj.recyclerviewdemo.R;
-import com.wj.recyclerviewdemo.asynctask.BitmapAsyncTask;
+import java.util.concurrent.Executors;
 
 /**
  * User: WangJiang(wangjiang7747@gmail.com)
@@ -44,10 +45,10 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
     private LruCache<String, Bitmap> mLruCache;
     private Set<BitmapAsyncTask> mBitmapAsyncTasks;
 
-    public BaseGridAdapter(Context context, RecyclerView recyclerView, int spanCount, int orientation) {
+    public BaseGridAdapter(RecyclerView recyclerView, int spanCount, int orientation) {
         mOrientation = orientation;
-        mWH = getWidthAndHeight(context, spanCount);
-        mUris.addAll(getUris(context));
+        mWH = getWidthAndHeight(recyclerView.getContext(), spanCount);
+        mUris.addAll(getUris(recyclerView.getContext()));
         mLruCache = new LruCache<String, Bitmap>((int) Runtime.getRuntime().maxMemory() / 8) {
             @Override
             protected int sizeOf(String key, Bitmap value) {
@@ -148,7 +149,7 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
             viewCache.imageView.setImageResource(R.drawable.image_default_bg);
             if (mIsIdle) {
                 BitmapAsyncTask bat = new BitmapAsyncTask(viewCache.imageView, uri, mWH);
-                bat.execute(mLruCache);
+                bat.executeOnExecutor(Executors.newCachedThreadPool(), mLruCache);
                 mBitmapAsyncTasks.add(bat);
             }
         } else {
