@@ -23,7 +23,7 @@ import java.util.Set;
 import java.util.concurrent.Executors;
 
 /**
- * User: WangJiang(wangjiang7747@gmail.com)
+ * User: WangJiang(https://github.com/WJRye/RecyclerView)
  * Date: 2016-04-07
  * Time: 19:44
  */
@@ -44,6 +44,7 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
     //缓存图片
     private LruCache<String, Bitmap> mLruCache;
     private Set<BitmapAsyncTask> mBitmapAsyncTasks;
+    private RecyclerViewOnScrollListener mOnScrollListener;
 
     public BaseGridAdapter(RecyclerView recyclerView, int spanCount, int orientation) {
         mOrientation = orientation;
@@ -59,6 +60,11 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
         addOnScrollListener(recyclerView);
     }
 
+    /**
+     * @param context   上下文对象
+     * @param spanCount 列数
+     * @return 得到item的宽高
+     */
     public abstract int[] getWidthAndHeight(Context context, int spanCount);
 
     /**
@@ -67,35 +73,11 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
      * @param recyclerView
      */
     private void addOnScrollListener(RecyclerView recyclerView) {
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    mIsIdle = true;
-                    int count = recyclerView.getChildCount();
-                    for (int i = 0; i < count; i++) {
-                        if (!mIsIdle) break;
-                        View view = recyclerView.getChildAt(i);
-                        loadPicture(recyclerView.getChildViewHolder(view));
-                    }
-                } else {
-                    if (mIsIdle) {
-                        mIsIdle = false;
-                        int size = mBitmapAsyncTasks.size();
-                        //在滑动的时候，取消未完成的任务
-                        BitmapAsyncTask[] bats = mBitmapAsyncTasks.toArray(new BitmapAsyncTask[size]);
-                        for (BitmapAsyncTask bat : bats) {
-                            if (bat != null && bat.getStatus() != AsyncTask.Status.FINISHED) {
-                                bat.cancel(true);
-                                mBitmapAsyncTasks.remove(bat);
-                                bat = null;
-                            }
-                        }
-                    }
-                }
-            }
-        });
+        if (mOnScrollListener == null) {
+            mOnScrollListener = new RecyclerViewOnScrollListener();
+        }
+        recyclerView.removeOnScrollListener(mOnScrollListener);
+        recyclerView.addOnScrollListener(mOnScrollListener);
     }
 
     /**
@@ -168,6 +150,38 @@ public abstract class BaseGridAdapter extends RecyclerView.Adapter {
         public ViewCache(View itemView) {
             super(itemView);
             imageView = (ImageView) itemView;
+        }
+    }
+
+
+    private final class RecyclerViewOnScrollListener extends RecyclerView.OnScrollListener {
+        @Override
+        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+            super.onScrollStateChanged(recyclerView, newState);
+            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                //滑动停止，开始加载
+                mIsIdle = true;
+                int count = recyclerView.getChildCount();
+                for (int i = 0; i < count; i++) {
+                    if (!mIsIdle) break;
+                    View view = recyclerView.getChildAt(i);
+                    loadPicture(recyclerView.getChildViewHolder(view));
+                }
+            } else {
+                if (mIsIdle) {
+                    mIsIdle = false;
+                    int size = mBitmapAsyncTasks.size();
+                    //在滑动的时候，取消未完成的任务
+                    BitmapAsyncTask[] bats = mBitmapAsyncTasks.toArray(new BitmapAsyncTask[size]);
+                    for (BitmapAsyncTask bat : bats) {
+                        if (bat != null && bat.getStatus() != AsyncTask.Status.FINISHED) {
+                            bat.cancel(true);
+                            mBitmapAsyncTasks.remove(bat);
+                            bat = null;
+                        }
+                    }
+                }
+            }
         }
     }
 }
