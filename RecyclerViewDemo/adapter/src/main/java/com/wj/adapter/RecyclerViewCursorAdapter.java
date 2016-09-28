@@ -12,7 +12,14 @@ import android.widget.Filterable;
 
 /**
  * Author：王江 on 2016/9/23 12:06
- * Description: RecyclerView with CursorAdapter
+ * <p>
+ * Description：Adapter that exposes data from a {@link android.database.Cursor Cursor} to a
+ * {@link android.support.v7.widget.RecyclerView RecyclerView} widget.
+ * <p>
+ * The Cursor must include a column named "_id" or this class will not work.
+ * Additionally, using {@link android.database.MergeCursor} with this class will
+ * not work if the merged Cursors have overlapping values in their "_id"
+ * columns.
  */
 public abstract class RecyclerViewCursorAdapter extends RecyclerView.Adapter implements Filterable {
 
