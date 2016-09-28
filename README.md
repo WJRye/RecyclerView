@@ -50,7 +50,9 @@ public class MainAdapter extends RecyclerViewCursorAdapter {
 }
 ```
 
-If you want to refresh the UI when the data changes, you can call swapCursor(),swapCursorItemChanged(),swapCursorItemRangeChanged(),swapCursorItemInserted(),swapCursorItemRemoved(),swapCursorItemRangeRemoved(),or swapCursorItemMoved() method. Those are like notifyItemChanged(),notifyItemRangeChanged(),notifyItemInserted(),notifyItemRemoved(),notifyItemRangeRemoved(),and notifyItemMoved() method. However,you don't need to call them.
+If you want to refresh the UI when the data changes, you can call swapCursor(),swapCursorItemChanged(),swapCursorItemRangeChanged(),swapCursorItemInserted(),swapCursorItemRemoved(),swapCursorItemRangeRemoved(),or swapCursorItemMoved() method. Those are like notifyItemChanged(),notifyItemRangeChanged(),notifyItemInserted(),notifyItemRemoved(),notifyItemRangeRemoved(),and notifyItemMoved() method. However,you don't need to call them.         
+
+There is a [Example](https://github.com/WJRye/RecyclerView/tree/master/RecyclerViewDemo/adapterExample) that shows how to use RecyclerViewCursorAdapter.
 
 ##Screenshots
 <img src="./Screenshots/device-2016-09-28-113604.gif" width = "270" height = "490" alt="水平网格" align=left />
