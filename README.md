@@ -7,7 +7,7 @@ It's a simple demo of RecyclerView. Moreover,it shows how to use RecyclerView to
 #RecyclerViewCursorAdapter  
 It's a Adapter that exposes data from a Cursor to a RecyclerView.
 ##How to use?
-RecyclerViewCursorAdapter is a abstract class, it's like [CursorAdapter](https://developer.android.com/reference/android/widget/CursorAdapter.html). For example:
+RecyclerViewCursorAdapter is an abstract class and needs to override some methods, it's like [CursorAdapter](https://developer.android.com/reference/android/widget/CursorAdapter.html). For example:
 ```
 public class MainAdapter extends RecyclerViewCursorAdapter {
 
