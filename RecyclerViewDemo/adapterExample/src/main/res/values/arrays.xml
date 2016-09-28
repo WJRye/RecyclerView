@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="menu">
+        <item>notifyItemChanged(%d)</item>
+        <item>notifyItemRangeChanged(%d,2)</item>
+        <item>notifyItemRemoved(%d)</item>
+        <item>notifyItemRangeRemoved(%d,2)</item>
+    </string-array>
+
+</resources>

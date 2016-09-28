@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RecyclerViewCursorAdapter-Example</string>
+    <string name="call_logs_cp">ContentProvider</string>
+    <string name="call_logs_db">DataBase</string>
+</resources>
