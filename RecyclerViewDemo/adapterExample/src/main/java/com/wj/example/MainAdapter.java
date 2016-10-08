@@ -29,7 +29,6 @@ public class MainAdapter extends RecyclerViewCursorAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.main_item, parent, false);
-
         return new ViewCache(view);
     }
 

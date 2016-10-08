@@ -13,8 +13,8 @@ import android.widget.Filterable;
 /**
  * Author：王江 on 2016/9/23 12:06
  * <p>
- * Description：Adapter that exposes data from a {@link android.database.Cursor Cursor} to a
- * {@link android.support.v7.widget.RecyclerView RecyclerView} widget.
+ * Description：Adapter that exposes data from a {@link Cursor Cursor} to a
+ * {@link RecyclerView RecyclerView} widget.
  * <p>
  * The Cursor must include a column named "_id" or this class will not work.
  * Additionally, using {@link android.database.MergeCursor} with this class will
@@ -185,63 +185,63 @@ public abstract class RecyclerViewCursorAdapter extends RecyclerView.Adapter imp
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemChanged(int)
+     * @see RecyclerView.Adapter#notifyItemChanged(int)
      */
     public Cursor swapCursorItemChanged(Cursor newCursor, int position) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_CHANGED, position, 1));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemChanged(int, Object)
+     * @see RecyclerView.Adapter#notifyItemChanged(int, Object)
      */
     public Cursor swapCursorItemChanged(Cursor newCursor, int position, Object payload) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_CHANGED, position, 1, payload));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemRangeChanged(int, int)
+     * @see RecyclerView.Adapter#notifyItemRangeChanged(int, int)
      */
     public Cursor swapCursorItemRangeChanged(Cursor newCursor, int positionStart, int itemCount) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_CHANGED, positionStart, itemCount));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemRangeChanged(int, int, Object)
+     * @see RecyclerView.Adapter#notifyItemRangeChanged(int, int, Object)
      */
     public Cursor swapCursorItemRangeChanged(Cursor newCursor, int positionStart, int itemCount, Object payload) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_CHANGED, positionStart, itemCount, payload));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemInserted(int)
+     * @see RecyclerView.Adapter#notifyItemInserted(int)
      */
     public Cursor swapCursorItemInserted(Cursor newCursor, int position) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_INSERTED, position, 1));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemRangeInserted(int, int)
+     * @see RecyclerView.Adapter#notifyItemRangeInserted(int, int)
      */
     public Cursor swapCursorItemRangeInserted(Cursor newCursor, int positionStart, int itemCount) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_INSERTED, positionStart, itemCount));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemRemoved(int)
+     * @see RecyclerView.Adapter#notifyItemRemoved(int)
      */
     public Cursor swapCursorItemRemoved(Cursor newCursor, int position) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_REMOVED, position, 1));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemRangeRemoved(int, int)
+     * @see RecyclerView.Adapter#notifyItemRangeRemoved(int, int)
      */
     public Cursor swapCursorItemRangeRemoved(Cursor newCursor, int positionStart, int itemCount) {
         return swapCursor(newCursor, new Notify(Notify.ITEM_RANGE_REMOVED, positionStart, itemCount));
     }
 
     /**
-     * @see android.support.v7.widget.RecyclerView.Adapter#notifyItemMoved(int, int)
+     * @see RecyclerView.Adapter#notifyItemMoved(int, int)
      */
     public Cursor swapCursorItemMoved(Cursor newCursor, int fromPosition, int toPosition) {
         Notify notify = new Notify(Notify.ITEM_RANGE_MOVED);
