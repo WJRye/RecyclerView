@@ -1,12 +1,12 @@
 #RecyclerView  
 It's a simple demo of RecyclerView. Moreover,it shows how to use RecyclerView to display a huge number of images.
 
-##Screenshots
+##Screenshots  
 <img src="./Screenshots/device-2016-09-28-120221.gif" width = "270" height = "490" alt="水平网格" align=center />
 
-#RecyclerViewCursorAdapter  
+#RecyclerViewCursorAdapter    
 It's a Adapter that exposes data from a Cursor to a RecyclerView.
-##How to use?
+##How to use?  
 RecyclerViewCursorAdapter is an abstract class and needs to override some methods, it's like [CursorAdapter](https://developer.android.com/reference/android/widget/CursorAdapter.html). For example:
 ```
 public class MainAdapter extends RecyclerViewCursorAdapter {
@@ -54,7 +54,7 @@ If you want to refresh the UI when the data changes, you can call swapCursor(),s
 
 There is a [Example](https://github.com/WJRye/RecyclerView/tree/master/RecyclerViewDemo/adapterExample) that shows how to use RecyclerViewCursorAdapter.
 
-##Screenshots
+##Screenshots  
 <img src="./Screenshots/device-2016-09-28-113604.gif" width = "270" height = "490" alt="水平网格" align=left />
 <img src="./Screenshots/device-2016-09-28-114040.gif" width = "270" height = "490" alt="水平网格" align=center />
 
